@@ -1,30 +1,31 @@
-total_miles = 0
-total_gallons = 0
+def stats(total_miles, total_gallons):
+    def numbers (trip, gallons):
+        while True:
+            try:
+                trip = float(input("Enter miles for trip: "))
+                total_miles.append(trip)
+            except ValueError:
+                #prints false if float is not entered 
+                print("please enter a number.")
+                continue
 
-def numbers (trip,gallons,empty):
-    while True:
-        trip = float(input("Enter miles driven (0 to quit): "))
-        if trip == empty:
-            break
+            try:
+                gallons = float(input("Enter gallons consumed: "))
+                total_gallons.append(gallons)
+            except ValueError:
+                print("please enter a number.")
+                continue
 
-        gallons = float(input("Enter gallons used: "))
+            mpg = trip / gallons
+            print("Miles per gallon for this tankful:", mpg)
+            
+            option = str(input('Would you like to continue? yes or quit '))
+            if option.lower() in ["n", "q"]:
+                break
 
-        mpg = trip / gallons
-        print("Miles per gallon for this tankful:", mpg)
+        total_mpg = sum(total_miles) / sum(total_gallons)
+        print("Total Miles Per Gallon:", total_mpg)
 
-        global total_miles
-        global total_gallons
-        total_miles += trip 
-        total_gallons += gallons
+    numbers([], [])
 
-        continue_input = input("Would you like to enter another tankful? (y/n)")
-        if continue_input.lower() == "n":
-            break
-
-    if total_gallons > empty:
-        total_mpg = total_miles / total_gallons
-        print("Total miles per gallon for all tankfuls: {:.2f}".format(total_mpg))
-    else:
-        print("No information was entered.")
-
-numbers(0,0,0)
+stats([0], [0])
