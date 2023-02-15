@@ -1,15 +1,15 @@
-username = input("Please enter your name: ")
-user_age = int(input("Hello, " + username + "! How old are you? "))
-dinner = input("Do you like pizza or pasta? ")
+name = input(str("Please enter your name: "))
+age = int(input("Hello,  hello {name} have you heard about russian rullet?? NO?! well ill tell you! How old are you? "))
+dinner = input(" Pizza or Pasta? ")
 
-if user_age >= 18:
-    if dinner == "pasta":
-        print("Awesome, " + username + "! We're going to Olive Garden and ordering " + dinner + " tonight!")
-    elif dinner == "pizza":
-        print("I know a fancy " + dinner + " place with a special that includes drinks and a side!")
+if age >= 18:
+    if dinner == "Pasta":
+        print("  {name}, we are going to dinner to get {dinner} tonight")
+    elif dinner == "Pizza":
+        print("I know a fancy {dinner} place with a special that includes drinks and a side!")
     else:
-        print("I've never made " + dinner + " before but we can go get groceries and make it!")
+        print("I've never made {dinner} before, lets go to the store ")
 else:
-    print("Sorry, " + username + ", we have to ask my parents before we can get " + dinner + " tonight.")
+    print("Sorry,  {name} , we need to ask before we can get {dinner} tonight.")
 
-print("Thanks for dinner, " + username + "!")
+print("Thanks for dinner,  {name} !")
