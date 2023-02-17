@@ -1,4 +1,4 @@
-
+ 
 def collatz(userinput):
     if userinput % 2 == 0:
         result = userinput // 2 
