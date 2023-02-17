@@ -4,7 +4,7 @@ dinner = input(" Pizza or Pasta? ")
 
 if age >= 18:
     if dinner == "Pasta":
-        print("  {name}, we are going to dinner to get {dinner} tonight")
+        print("  {name}, we are going to dinner to get {dinner} tonight at olive garden")
     elif dinner == "Pizza":
         print("I know a fancy {dinner} place with a special that includes drinks and a side!")
     else:

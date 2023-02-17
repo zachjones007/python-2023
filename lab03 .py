@@ -1,18 +1,12 @@
- 
-def collatz(userinput):
-    if userinput % 2 == 0:
-        result = userinput // 2 
-    else: 
-        result = 3 * userinput + 1 
-    print(result) 
-    return result 
+def collatz(userinput,zero,one,two,three):
+    Collatzsequence = [userinput]
+    while userinput != one:
+        if userinput % two == zero:
+            userinput = userinput // two
+        else:
+            userinput = three * userinput + one
+        Collatzsequence.append(userinput)
+    print (Collatzsequence)
 
-print("Welcome to the Collatz Sequence calculator.")
-
-
-Numbers = int(input("Please enter a positive number: "))
-
-
-while Numbers != 1:
-    Numbers = collatz(Numbers) # Calculate the next number in the sequence
-print("The Collatz sequence has reached 1.")
+userinput = int(input("Enter a positive integer: "))
+collatz(userinput,0,1,2,3)
