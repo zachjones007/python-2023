@@ -1,4 +1,3 @@
-#Lab: Telephone Number Word Generator
 keypad = {
     '2': 'ABC',
     '3': 'DEF',
@@ -7,7 +6,7 @@ keypad = {
     '6': 'MNO',
     '7': 'PRS',
     '8': 'TUV',
-    '9': 'WXY'
+    '9': 'WXY',
 }
 
 def generate_words(phone_number):
@@ -23,8 +22,25 @@ def generate_words(phone_number):
                                 words.append(word)
     return words
 
-phone_number = input("Enter a seven-digit phone number: ")
-words = generate_words(phone_number)
+while True:
+    phone_number = input("Enter a seven-digit phone number: ")
+    words = generate_words(phone_number)
 
-print(f"There are {len(words)} possible word combinations for the phone number {phone_number}:")
-print(words)
+    with open("phonewords.txt", "w") as file:
+        file.write(f"There are {len(words)} possible word combinations for the phone number {phone_number}:\n")
+        file.write("\n".join(words) + "\n\n")
+
+    print(f"There are {len(words)} combinations for {phone_number}")
+
+    while True:
+        option = input('print phonewords.txt? (yes or quit) ')
+        if option.lower() in ["y", "yes"]:
+            with open("phonewords.txt", "r") as file:
+                print(file.read())
+            break
+        elif option.lower() in ["n", "q", "quit"]:
+            break
+        else:
+            print("Invalid input. Please enter 'yes' or 'quit'.")
+    if option.lower() in ["n", "q", "quit"]:
+        break

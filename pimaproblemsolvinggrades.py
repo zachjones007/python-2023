@@ -1,14 +1,18 @@
-import random
-
-# Generate some grades and write them to a file
-with open("grades.txt", "w") as file:
-    for i in range(10):
-        grade = random.randint(50, 100)
-        file.write(str(grade) + "\n")
-
-# Read the grades from the file and calculate the class average
+with open("grades.txt", "a") as file:
+    while True:
+        grade = input("Enter a grade or type quit: ")
+        if grade in ['q', 'Q', 'd','D']:
+            break
+        try:
+            grade = float(grade)
+            if grade <= 100.00:
+                file.write("{:.2f}\n".format(grade))
+            else:
+                print("must be lessthen or equal too 100.00")
+        except ValueError:
+            print("ValueError")
+    
 with open("grades.txt", "r") as file:
-    grades = [int(grade) for grade in file.readlines()]
-
-class_average = sum(grades) / len(grades)
-print("Class average: {:.2f}".format(class_average))
+    grades = [float(line.strip()) for line in file]
+    class_average = sum(grades) / len(grades)
+    print("Class average: {:.2f}".format(class_average))
