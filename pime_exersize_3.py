@@ -26,17 +26,13 @@ while True:
     phone_number = input("Enter a seven-digit phone number: ")
     words = generate_words(phone_number)
 
-    with open("phonewords.txt", "w") as file:
-        file.write(f"There are {len(words)} possible word combinations for the phone number {phone_number}:\n")
-        file.write("\n".join(words) + "\n\n")
-
-    print(f"There are {len(words)} combinations for {phone_number}")
+    print(f"There are {len(words)} possible word combinations for the phone number {phone_number}:\n")
+    print("\n".join(words) + "\n\n")
 
     while True:
-        option = input('print phonewords.txt? (yes or quit) ')
+        option = input('Print phone words? (yes or quit) ')
         if option.lower() in ["y", "yes"]:
-            with open("phonewords.txt", "r") as file:
-                print(file.read())
+            print("\n".join(words) + "\n")
             break
         elif option.lower() in ["n", "q", "quit"]:
             break
