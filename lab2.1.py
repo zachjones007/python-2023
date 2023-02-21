@@ -2,52 +2,30 @@ import random
 
 while True:
     name = input("Please enter your name: ")
-    age = input("Hello, " + name + "! How old are you? ")
-    food = input("Do you like pizza or pasta? ")
+    print(f"Hello, {name}!")
 
-    if food.lower() == "pizza":
-        print("Sorry, " + name + ", we have to ask my parents before we can get pizza tonight.")
-    else:
-        print("Awesome, " + name + "! We're going to Olive Garden and ordering pasta tonight!")
-        for i in range(random.randint(1, 5)):
-            print("Yum")
+    age = input("How old are you? ")
+    print(f"{age}, got it.")
 
-    another_person = input("Does someone else want to go to dinner? ")
-    if another_person.lower() != "y" and another_person.lower() != "yes":
-        print("Thanks for dinner, " + name + "!")
-        break
-
-
-
-import random
-
-def dinner_plans(name, age, food):
-    if food.lower() == "pizza":
-        print("Sorry, " + name + ", we have to ask my parents before we can get pizza tonight.")
-    else:
-        print("Awesome, " + name + "! We're going to Olive Garden and ordering pasta tonight!")
-        for i in range(random.randint(1, 5)):
-            print("Yum")
-
-    another_person = input("Does someone else want to go to dinner? ")
-    if another_person.lower() != "y" and another_person.lower() != "yes":
-        print("Thanks for dinner, " + name + "!")
-        return True
-    else:
-        return False
-
-def main():
     while True:
-        name = input("Please enter your name: ")
-        age = input("Hello, " + name + "! How old are you? ")
-        food = input("Do you like pizza or pasta? ")
-        stop = dinner_plans(name, age, food)
-        if stop:
+        food_preference = input("Do you like pizza or pasta? ")
+        if food_preference.lower() == "pizza":
+            print(f"Sorry, {name}, we have to ask my parents before we can get pizza tonight.")
             break
+        elif food_preference.lower() == "pasta":
+            print(f"Awesome, {name}! We're going to Olive Garden and ordering pasta tonight!")
+            break
+        else:
+            print("I'm sorry, I didn't understand that food preference.")
 
-if __name__ == "__main__":
-    main()
+    num_yums = random.randint(1, 5)
+    print("Yum\n" * num_yums)
 
-
-
-
+    while True:
+        go_to_dinner = input("Does someone else want to go to dinner? ")
+        if go_to_dinner.lower() in ["no", "n","N"]:
+            print(f"Thanks for dinner, {name}!")
+            break
+        else:
+            print(f"Please enter your name:")
+            break
