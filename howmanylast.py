@@ -34,15 +34,20 @@ def word_count(userinput):
         inventory[word] += 1
     print('Inventory updated!')
     return inventory
+
 def Sixth(userinput):
-    sixth_character = userinput[5] # userinput = input creates a string value and it prints the 6th string vlaue
-    return sixth_character
+    if len(userinput) >= 6:
+        sixth_character = userinput[5]
+        return sixth_character
+    else: 
+        return None
+
 
 def repeat(userinput):
     lastcharacter = userinput[-1]
     ranlist = lastcharacter * (random.randint(1,10)) 
     howmanylast = len(ranlist)
-    return howmanylast
+    return lastcharacter * (random.randint(1,10))
     
  
 
@@ -57,5 +62,6 @@ letter_counts = checkletter(userinput)
 print("Letter count dictionary:", letter_counts)
 print(Sixth)  # Output: ",
 print("last letter random amount of times",repeat(userinput))
+
 
 
