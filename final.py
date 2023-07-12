@@ -1,4 +1,6 @@
 import re
+
+
 class Employee:
     def __init__(self, first_name, last_name, social):
         self._first_name = first_name
@@ -81,94 +83,81 @@ class HourlyEmployee(Employee):
         return f"Hourly Employee: {Employee.__repr__(self)}"
 
 
-    def main():
-        salaried_emp = SalariedEmployee("Alice", "Smith", "987-65-4321", 1000)
-        hourly_emp = HourlyEmployee("Bob", "Johnson", "456-78-9123", 45, 20)
+class CheckPass(Employee):
+    def __init__(self, first_name, last_name, social, hours, wage_per_hour):
+        Employee.__init__(self, first_name, last_name, social)
+        Pass = str(input('Do you have a password?'))
+        if Pass in ('Y', 'E', 'S'):
+            with open('grades.txt', 'r') as file:
+                def extract_credentials(file_path):
+                    with open(file_path, 'r') as file:
+                        file_contents = file.read()
+
+                    # Define a regular expression pattern to match username and password
+                    pattern = r'Username: (\w+), Password: (\w+)'
+
+                    # Find all matches in the file contents
+                    matches = re.findall(pattern, file_contents)
+
+                    # Extract usernames and passwords from matches
+                    credentials = [(username, password) for username, password in matches]
+
+                    # Example usage
+                    file_path = 'credentials.txt'
+                    credentials = extract_credentials(file_path)
+
+                    # Print the extracted usernames and passwords
+                    for username, password in credentials:
+                        print(f'Username: {username}, Password: {password}')
+
+                    EmployeeType = input('Are you a part-time or full-time employee? Enter 1 for part-time or 2 for full-time: ')
+                    if EmployeeType == '1':
+                        print("Earnings:", self.earnings())
+                    else:
+                        print("Earnings:", wage_per_hour.earnings())
+
+                    return credentials
+        else:
+            def is_strong_password(password, name, birthdate):
+                if len(password) < 10:
+                    print('Password must be at least 10 characters long.')
+                    return False
+
+                if not re.search('[a-z]', password) or not re.search('[A-Z]', password):
+                    print('Password must contain both lowercase and uppercase letters.')
+                    return False
+
+                if not re.search('[0-9]', password):
+                    print('Password must contain at least one digit.')
+                    return False
+
+                if re.search(name, password, re.IGNORECASE):
+                    print('Password must not contain your name.')
+                    return False
+
+                if re.search(birthdate, password):
+                    print('Password must not contain your birth year.')
+                    return False
+
+                print('Password is strong.')
+                return True
+
+            name = input('What is your username? ')
+            birthdate = input('What is your birth year? ')
+            password = input('Input a password: ')
+
+            if is_strong_password(password, name, birthdate):
+                # Write password to file
+                with open('grades.txt', 'a') as file:
+                    file.write(password + '\n' + name + '\n')
 
 
+def main():
+    salaried_emp = SalariedEmployee("Alice", "Smith", "987-65-4321", 1000)
+    hourly_emp = HourlyEmployee("Bob", "Johnson", "456-78-9123", 45, 20)
+    check_pass = CheckPass("John", "Doe", "123-45-6789", 40, 25)
 
 
-
-
-
-
-
-
-
-Pass = str(input('Do you have a password?'))
-if Pass in ('Y', 'E', 'S'):
-    with open('grades.txt', 'r') as file:
-        def extract_credentials(file_path):
-            with open(file_path, 'r') as file:
-                file_contents = file.read()
-
-            # Define a regular expression pattern to match username and password
-            pattern = r'Username: (\w+), Password: (\w+)'
-
-            # Find all matches in the file contents
-            matches = re.findall(pattern, file_contents)
-
-            # Extract usernames and passwords from matches
-            credentials = [(username, password) for username, password in matches]
-
-            return credentials
-
-# Example usage
-file_path = 'credentials.txt'
-credentials = extract_credentials(file_path)
-
-# Print the extracted usernames and passwords
-for username, password in credentials:
-    print(f'Username: {username}, Password: {password}')
-# Example usage
-file_path = 'credentials.txt'
-credentials = extract_credentials(file_path)
-
-# Print the extracted usernames and passwords
-for username, password in credentials:
-    print(f'Username: {username}, Password: {password}')
-    EmployeeType = input('are you are part time or full time employee? 1 for part 2 for full')
-    if EmployeeType == 1: 
-
-
-        print("Earnings:", first_name.earnings())
-
-
-
-
-    else: 
-        print("Earnings:", hourly_emp.earnings())
-   
-else:
-    def is_strong_password(password, name, birthdate):
-        if len(password) < 10:
-            print('Password must be at least 10 characters long.')
-            return False
-
-        if not re.search('[a-z]', password) or not re.search('[A-Z]', password):
-            print('Password must contain both lowercase and uppercase letters.')
-            return False
-
-        if not re.search('[0-9]', password):
-            print('Password must contain at least one digit.')
-            return False
-
-        if re.search(name, password, re.IGNORECASE):
-            print('Password must not contain your name.')
-            return False
-
-        if re.search(birthdate, password):
-            print('Password must not contain your birth year.')
-            return False
-
-        print('Password is strong.')
-        return True
-    name = input('What is your username?')
-    birthdate = input('What is your birth year?')
-    password = input('Input a password:')
-
-    # Write password to file
-    with open('grades.txt', 'a') as file:
-        file.write(password + '\n' + name + '\n')
-
-
+if __name__ == '__main__':
+    main()
+    print('Thank you')
