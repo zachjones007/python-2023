@@ -88,7 +88,7 @@ class CheckPass(Employee):
         Employee.__init__(self, first_name, last_name, social)
         Pass = str(input('Do you have a password?'))
         if Pass in ('Y', 'E', 'S'):
-            with open('grades.txt', 'r') as file:
+            with open('passwordlist.txt', 'r') as file:
                 def extract_credentials(file_path):
                     with open(file_path, 'r') as file:
                         file_contents = file.read()
@@ -103,7 +103,7 @@ class CheckPass(Employee):
                     credentials = [(username, password) for username, password in matches]
 
                     # Example usage
-                    file_path = 'credentials.txt'
+                    file_path = 'passwordlist.txt'
                     credentials = extract_credentials(file_path)
 
                     # Print the extracted usernames and passwords
@@ -118,38 +118,40 @@ class CheckPass(Employee):
 
                     return credentials
         else:
-            def is_strong_password(password, name, birthdate):
-                if len(password) < 10:
-                    print('Password must be at least 10 characters long.')
-                    return False
+            while True:
+                print('can you please create a password')
+                def is_strong_password(password, name, birthdate):
+                    if len(password) < 10:
+                        print('Password must be at least 10 characters long.')
+                        return False
 
-                if not re.search('[a-z]', password) or not re.search('[A-Z]', password):
-                    print('Password must contain both lowercase and uppercase letters.')
-                    return False
+                    if not re.search('[a-z]', password) or not re.search('[A-Z]', password):
+                        print('Password must contain both lowercase and uppercase letters.')
+                        return False
 
-                if not re.search('[0-9]', password):
-                    print('Password must contain at least one digit.')
-                    return False
+                    if not re.search('[0-9]', password):
+                        print('Password must contain at least one digit.')
+                        return False
 
-                if re.search(name, password, re.IGNORECASE):
-                    print('Password must not contain your name.')
-                    return False
+                    if re.search(name, password, re.IGNORECASE):
+                        print('Password must not contain your name.')
+                        return False
 
-                if re.search(birthdate, password):
-                    print('Password must not contain your birth year.')
-                    return False
+                    if re.search(birthdate, password):
+                        print('Password must not contain your birth year.')
+                        return False
 
-                print('Password is strong.')
-                return True
+                    print('Password is strong.')
+                    return True
 
-            name = input('What is your username? ')
-            birthdate = input('What is your birth year? ')
-            password = input('Input a password: ')
+                name = input('What is your username? ')
+                birthdate = input('What is your birth year? ')
+                password = input('Input a password: ')
 
-            if is_strong_password(password, name, birthdate):
-                # Write password to file
-                with open('grades.txt', 'a') as file:
-                    file.write(password + '\n' + name + '\n')
+                if is_strong_password(password, name, birthdate):
+                    # Write password to file
+                    with open('passwordlist.txt', 'a') as file:
+                        file.write(password + '\n' + name + '\n')
 
 
 def main():
