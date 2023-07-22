@@ -19,6 +19,25 @@ matrix = [
 ]
 print(matrix[2][1])  # prints 8
 
+# This is a recursive function named 'go' that computes Fibonacci numbers.
+def go(a):
+    # Base case: If 'a' is 0 or 1, the function returns 'a'.
+    if a <= 1:
+        return a
+    else:
+        # Recursive call: This function calls itself twice.
+        # One call is for the previous Fibonacci number (a-1) and the other call is for the Fibonacci number before that (a-2).
+        # The function then returns the sum of those two Fibonacci numbers to produce the 'a'th Fibonacci number.
+        return go(a-1) + go(a-2)
+a = 10
+fibs = go(a)
+print(fibs)
+#go(10)
+#= go(9) + go(8)
+#= (go(8) + go(7)) + (go(7) + go(6))
+#= ((go(7) + go(6)) + (go(6) + go(5))) + ((go(6) + go(5)) + (go(5) + go(4)))+ (this continues expanding until reaching base cases)
+
+
 # Object Oriented Programming
 class Employee:
     def __init__(self, name, age):
