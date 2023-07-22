@@ -13,9 +13,9 @@ def display_person(p):
 
 # Complex Arrays with Structured Elements
 matrix = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
+    [1, 2, 3], #0
+    [4, 5, 6], #1
+    [7, 8, 9]  #2
 ]
 print(matrix[2][1])  # prints 8
 
