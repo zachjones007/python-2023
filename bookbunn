@@ -1,0 +1,56 @@
+from p5 import *
+
+grid = None
+
+def setup():
+    size(500, 500)
+    global grid
+    grid = load_image('/Users/zachjones/Desktop/book /grid/grid.png')
+
+
+def draw():
+                                          
+    background(255)
+    image(grid, 0, 0)
+    no_fill()
+
+
+    stroke_weight(8)
+    stroke('#ff9900')   # Set fill color to orange
+    ellipse(100, 100, 100, 50) 
+    stroke('#ff9900')
+    
+
+    stroke_weight(8)
+    stroke('#ff9900')   # Set fill color to orange
+    ellipse(400, 400, 100, 50) 
+    stroke('#ff9900')
+  
+  
+    stroke_weight(2)  # You can adjust the weight as needed
+    curve(0, 250, 100, 100, 400, 400, 500, 250)
+
+    cp1x = 0
+    cp1y = 400
+    cp2x = 320
+    cp2y = 420 
+    stroke('#FF0000')  
+    line(400, 100, cp1x, cp1y)
+    line(100, 400, cp2x, cp2y)
+
+    stroke('#FF99FF')
+    curveTightness(-0.5) 
+    curve(100, 400, cp1x, cp1y, cp2x, cp2y, 400, 100)
+
+
+
+    beginShape()
+    vertex(100,200)
+    vertex(200,200)
+    vertex(100,100)
+    vertex(200,100)
+    vertex(200,200)
+    vertex(100,200)
+    endShape()
+
+run()
